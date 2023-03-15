@@ -1,11 +1,11 @@
 import io.qameta.allure.junit4.DisplayName;
+import org.junit.Assert;
 import org.junit.Test;
 import pageobject.LoginPageLocators;
 import pageobject.MainPageLocators;
 import pageobject.ProfilePageLocators;
 import pageobject.RegisterPageLocators;
 
-import static org.junit.Assert.assertEquals;
 import static config.Configuration.*;
 
 public class TransitionTests extends TestBase{
@@ -69,7 +69,7 @@ public class TransitionTests extends TestBase{
         driver.get(baseUrl);
         mainPageLocators.clickFillingButton();
         mainPageLocators.clickBunButton();
-        mainPageLocators.findBunText();
+        Assert.assertEquals(bunText, mainPageLocators.getTextFromSelectedMenu());
     }
     @Test
     @DisplayName("Переход по разделам конструктора. Соусы")
@@ -78,7 +78,7 @@ public class TransitionTests extends TestBase{
 
         driver.get(baseUrl);
         mainPageLocators.clickSauceButton();
-        mainPageLocators.findSauceText();
+        Assert.assertEquals(sauceText, mainPageLocators.getTextFromSelectedMenu());
 
 
     }
@@ -89,7 +89,7 @@ public class TransitionTests extends TestBase{
 
         driver.get(baseUrl);
         mainPageLocators.clickFillingButton();
-        mainPageLocators.findFillingText();
+        Assert.assertEquals(fillingText, mainPageLocators.getTextFromSelectedMenu());
     }
 
 }

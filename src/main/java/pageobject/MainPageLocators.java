@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static org.junit.Assert.assertEquals;
 
 public class MainPageLocators {
     public MainPageLocators(WebDriver driver) {
@@ -28,11 +27,14 @@ public class MainPageLocators {
     // Локатор текста булки
     private final By bunText = By.xpath("//p[contains(text(), 'Краторная булка N-200i')]");
 
-    // Локатор текста соуса
-    private final By sauceText = By.xpath("//p[contains(text(), 'Соус фирменный Space Sauce')]");
+    // Локатор выбранного меню в конструкторе
+    private static final By currentMenu = By.xpath("//div[contains(@class,'tab_tab__1SPyG tab_tab_type_current__2BEPc')]");
 
-    // Локатор текста начинки
-    private final By fillingText = By.xpath("//p[contains(text(), 'Мясо бессмертных моллюсков Protostomia')]");
+//    // Локатор текста соуса
+//    private final By sauceText = By.xpath("//p[contains(text(), 'Соус фирменный Space Sauce')]");
+//
+//    // Локатор текста начинки
+//    private final By fillingText = By.xpath("//p[contains(text(), 'Мясо бессмертных моллюсков Protostomia')]");
 
     // Локатор кнопки войти в аккаунт на главной странице
     private final By mainPageLoginButton = By.xpath(".//button[@class = 'button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg' " +
@@ -62,14 +64,14 @@ public class MainPageLocators {
         new WebDriverWait(driver, 5).until(ExpectedConditions.presenceOfElementLocated(bunText));
 
     }
-    public void findSauceText() {
-        new WebDriverWait(driver, 5).until(ExpectedConditions.presenceOfElementLocated(sauceText));
-
-    }
-    public void findFillingText() {
-        new WebDriverWait(driver, 5).until(ExpectedConditions.presenceOfElementLocated(fillingText));
-
-    }
+//    public void findSauceText() {
+//        new WebDriverWait(driver, 5).until(ExpectedConditions.presenceOfElementLocated(sauceText));
+//
+//    }
+//    public void findFillingText() {
+//        new WebDriverWait(driver, 5).until(ExpectedConditions.presenceOfElementLocated(fillingText));
+//
+//    }
     public void clickMainPageLoginButton() {
         driver.findElement(mainPageLoginButton).click();
     }
@@ -78,5 +80,8 @@ public class MainPageLocators {
     }
     public void clickLogoButton() {
         driver.findElement(logoButton).click();
+    }
+    public String getTextFromSelectedMenu() {
+        return driver.findElement(currentMenu).getText();
     }
 }
